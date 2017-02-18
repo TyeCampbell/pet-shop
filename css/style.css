@@ -35,7 +35,7 @@
 }
 
 .navadjust {
-	background: rgba(25, 25, 25, 0.1);
+	background: #D1D1D1;
 	margin-bottom: 0px; 
 }
 
@@ -152,9 +152,16 @@ h2 {
 
 /* -------------- Store Location CSS */
 
+.about {
+	padding: 1.5em;
+}
+
+/* -------------- Store Location CSS */
+
 #map {
 	width: 100%;
 	height: 400px; 
+
 }
 
 .store-img {

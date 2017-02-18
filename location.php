@@ -13,10 +13,16 @@
 	</div>
 </div>
 
+<div class="container-fluid hidden-md hidden-lg">
+	<div class="row">
+		<img src="images/store-front-wide.png" class="img-responsive center-block inside-img">
+	</div>
+</div>
+
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 store">
-			<img src="images/store-front.png" class="img-responsive img-circle center-block store-img">
+		<div class="col-md-6 store hidden-sm hidden-xs">
+			<img src="images/store-front-sm.png" class="img-responsive img-circle center-block store-img">
 		</div>
 		<div class="col-md-6">
 			<h2 class="text-center">Store Location</h2>
