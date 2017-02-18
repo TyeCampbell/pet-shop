@@ -150,6 +150,36 @@ h2 {
 	color: #a94442;
 }
 
+/* -------------- Store Location CSS */
+
+#map {
+	width: 100%;
+	height: 400px; 
+}
+
+.store-img {
+	padding: 2.0em;
+}
+
+.directions {
+	margin: 1em 0.5em 1em 0.5em;
+	padding: 0.5em 1.5em;
+	font-size: 100%;
+	color: #fff;
+	border: 1px solid #5D2FAC;
+	border-radius: 10px;
+	background-color: #5D2FAC;
+}
+
+.address {
+	font-size: 125%;
+	padding-top: 5%;
+}
+
+.inside-img {
+	padding-top: 1.5em;
+}
+
 /* -------------- Footer CSS */
 
 footer .table {
