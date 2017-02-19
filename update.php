@@ -26,7 +26,7 @@ if (mysqli_connect_errno()) {
 	$city = clean_data($_POST['aptcity']);
 	$state = clean_data($_POST['aptstate']);
 	$zip = clean_data($_POST['aptzip']);
-	$phonenumber = $_POST['aptphonenumber']);
+	$phonenumber = clean_data($_POST['aptphonenumber']);
 	$email = clean_data($_POST['aptemail']);
 	$petname = clean_data($_POST['aptpetname']);
 	$petbirthday = clean_data($_POST['aptpetage']);
