@@ -25,28 +25,28 @@
         
         <div class="form-group has-feedback">
           <label for="fname" class="control-label">First Name:</label>
-          <input type="text" class="form-control has-error" id="fname" onblur="validate(this, reProperName);" required>
+          <input type="text" class="form-control has-error" id="fname" onblur="validate(this, reProperName);">
           <span class="glyphicon form-control-feedback"></span>
           <span class="validate-redlight"></span>
         </div>
 
         <div class="form-group has-sucess has-feedback">
           <label for="lname">Last Name:</label>
-          <input type="text" class="form-control" id="lname" onblur="validate(this, reProperName);" required>
+          <input type="text" class="form-control" id="lname" onblur="validate(this, reProperName);">
           <span class="glyphicon form-control-feedback"></span>
           <span class="validate-redlight"></span>
         </div>
 
         <div class="form-group has-feedback">
           <label for="email">Email Address:</label>
-          <input type="email" class="form-control" id="email" onblur="validate(this, reEmail);" required>
+          <input type="email" class="form-control" id="email" onblur="validate(this, reEmail);">
           <span class="glyphicon form-control-feedback"></span> 
           <span class="validate-redlight"></span>         
         </div>
 
         <div class="form-group has-feedback">
           <label for="message">Message:</label>
-          <textarea class="form-control" rows="8" id="message" onblur="validateTextArea(this, 350);" required></textarea>
+          <textarea class="form-control" rows="8" id="message" onblur="validateTextArea(this, 350);"></textarea>
           <span class="glyphicon form-control-feedback"></span> 
           <span class="validate-redlight"></span>         
         </div>
