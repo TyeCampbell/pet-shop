@@ -8,7 +8,7 @@
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Find your best friend... </h1>
+        <h1 id="override">Find your best friend... </h1>
       </div>
     </div>
 
