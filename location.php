@@ -50,4 +50,6 @@
 	</div>
 </div>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjoKFkMWAYUavnzceoE3x6T7BeY9jbjQ&callback=initMap"></script>
+
   <?php require 'Includes/footer.php'; ?>

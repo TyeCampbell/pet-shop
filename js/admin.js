@@ -337,7 +337,7 @@ $(function(){
         url: "deleterecord.php",
         data: info, 
         success: function(response) {
-          $("#"+del_id).parent().hide();
+          $("#"+del_id).parent().remove();
         }
       });
     }

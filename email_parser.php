@@ -27,8 +27,8 @@ if( isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['email']) &
 	$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;
 
-	$mail->setFrom('sandys.petshop.webucator@gmail.com', 'Sandys Petshop');
-	$mail->addReplyTo('sandys.petshop.webucator@gmail.com', 'Sandys Petshop');
+	$mail->setFrom($email, $fname . " " . $lname);
+	$mail->addReplyTo($email, $fname . " " . $lname);
 	$mail->addAddress('sandys.petshop.webucator@gmail.com');
 
 	$mail->isHTML(true);
