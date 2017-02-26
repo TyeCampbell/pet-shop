@@ -44,6 +44,44 @@
 	</div>
 </div>
 
+<div id="hours" class="container">
+	<div class="row">
+		<h2 class="text-center">Store Hours</h2>
+		<div class="table-responsive text-center">
+			<table class="table">
+				<tr>
+					<td>Monday:</td>
+					<td>7:00am - 7:00pm</td>
+				</tr>
+				<tr>
+					<td>Tuesday:</td>
+					<td>7:00am - 7:00pm</td>
+				</tr>
+				<tr>
+					<td>Wednesday:</td>
+					<td>7:00am - 7:00pm</td>
+				</tr>
+				<tr>
+					<td>Thursday:</td>
+					<td>7:00am - 7:00pm</td>
+				</tr>
+				<tr>
+					<td>Friday:</td>
+					<td>7:00am - 7:00pm</td>
+				</tr>
+				<tr>
+					<td>Saturday:</td>
+					<td>7:00am - 4:00pm</td>
+				</tr>
+				<tr>
+					<td>Sunday:</td>
+					<td>CLOSED</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<img src="images/store-inside-view.png" class="img-responsive center-block inside-img">

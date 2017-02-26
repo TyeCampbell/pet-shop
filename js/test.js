@@ -20,6 +20,7 @@ var reZipCode = /^\d{5}(\-\d{4})?$/;
 
 /* Validate First and Last Names */
 
+
 $("#fname, #lname").blur(function(){
 	if ($(this).val() == "") {
 		$(this).parent().addClass("has-error");

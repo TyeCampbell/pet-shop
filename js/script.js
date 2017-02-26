@@ -4,125 +4,122 @@
 
 	$("#year").html(theYear);
 
-
-
 /* ---------- Regular Expressions For Frorm Validations ---------- */
 
 var reProperName = /^([A-Z][A-Za-z]+ )*[A-Z][A-Za-z']+$/;
 var reEmail = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
 var rePhone = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
 var reZipCode = /^\d{5}(\-\d{4})?$/;
-var reUserName = /^[A-Za-z\d]{6,15}$/;
-var rePassword = /^[A-Za-z\d]{6,8}$/;
+//var reUserName = /^[A-Za-z\d]{6,15}$/;
+//var rePassword = /^[A-Za-z\d]{6,8}$/;
 
 
 /* ---------- Contact Us Form ---------- */
 
-/* Validate Form */
+/* Validate First and Last Names */
 
-function validate(element, reValidate) {
-	var elValue = element.value;
-	var elParent = element.parentNode;
-	var elSibling = element.nextSibling.nextSibling;
-	var tipEle = element.parentNode.lastChild.previousSibling;
+$("#fname, #lname").blur(function(){
+	if ($(this).val() == "") {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Required information.")
+		$("#sendmessage").disabled = true;
 
-	if (elValue == "") {
-		tipEle.innerHTML = "Required. Please enter information.";
-		elParent.className = "form-group has-error has-feedback";
-		elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
-		document.getElementById("sendmessage").disabled = true;
-
-	} else if (!reValidate.test(elValue)) {
-			tipEle.innerHTML = "This information is incorrect. Please enter valid information.";
-			elParent.className = "form-group has-error has-feedback";
-			elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
-			document.getElementById("sendmessage").disabled = true;
-
+	} else if (!reProperName.test($(this).val())) {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Not a valid proper name.")
+		$("#sendmessage").disabled = true;
 	} else {
-			tipEle.innerHTML = "";
-			elParent.className = "form-group has-success has-feedback";
-			elSibling.className = "glyphicon glyphicon-ok form-control-feedback";
-			document.getElementById("sendmessage").disabled = false;
-		}
-}
+		$(this).parent().removeClass("has-error");
+		$(this).next("span").removeClass("glyphicon-remove");
+		$(this).next("span").next().html("");
+		$("#sendmessage").disabled = false;
+	};
+});
 
-/*
-//On Focus Character Count for message. --- Need to work on. Add (onfocus="charCount(this, 15);) to text message area.
-function charCount(element, maxNum) {
-	var elValue = element.value;
-	var tipEle = element.parentNode.lastChild.previousSibling;
-	var numChar = elValue.length; 
-	tipEle.innerHTML = "Your message length: " + numChar + " (Max message length is: " + maxNum + " characters.)";
-}
-*/
 
-function validateTextArea(element, maxNum) {
-	var elValue = element.value;
-	var elParent = element.parentNode;
-	var elSibling = element.nextSibling.nextSibling;
-	var tipEle = element.parentNode.lastChild.previousSibling;
+/* Validate Email Address */
 
-	if (elValue == "") {
-		tipEle.innerHTML = "A message is required. Please enter information.";
-		elParent.className = "form-group has-error has-feedback";
-		elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
-		document.getElementById("sendmessage").disabled = true;
-	} else if (elValue.length < 5) {
-		tipEle.innerHTML = "More information is required. Keep typing...";
-		elParent.className = "form-group has-error has-feedback";
-		elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
-		document.getElementById("sendmessage").disabled = true;
-	} else if (elValue.length > maxNum) {
-		var numChar = elValue.length;
-		tipEle.innerHTML = "You have typed " + numChar + " characters and have exceeded the " + maxNum + " character limit. Please reduce your meassage.";
-		elParent.className = "form-group has-error has-feedback";
-		elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
-		document.getElementById("sendmessage").disabled = true;
+$("#email").blur(function(){
+if ($(this).val() == "") {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Email address required.")
+		$("#sendmessage").disabled = true;
+
+	} else if (!reEmail.test($(this).val())) {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Not a valid email address")
+		$("#sendmessage").disabled = true;
 	} else {
-		tipEle.innerHTML = "";
-		elParent.className = "form-group has-success has-feedback";
-		elSibling.className = "glyphicon glyphicon-ok form-control-feedback";
-		document.getElementById("sendmessage").disabled = false;
-	}
-}
+		$(this).parent().removeClass("has-error");
+		$(this).next("span").removeClass("glyphicon-remove");
+		$(this).next("span").next().html("");
+		$("#sendmessage").disabled = false;
+	};
+});
+
+/* Validate Message Body Address */
+
+
+$("#message").blur(function(){
+		if ($(this).val() == "") {
+			$(this).parent().addClass("has-error");
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).next("span").next().html("Required information.")
+			$("#requestbutton").disabled = true;
+		}  else if ($(this).val().length < 5) {
+			$(this).parent().addClass("has-error");
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).next("span").next().html("More information is required. Keep typing...")
+			$("#requestbutton").disabled = true;
+		} else if ($(this).val().length > 1000) {
+			$(this).parent().addClass("has-error");
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).next("span").next().html("You typed " + $(this).val().length + " characters. Maximum message limit is 1000 characters.")
+			$("#requestbutton").disabled = true;
+		} else {
+			$(this).parent().removeClass("has-error");
+			$(this).next("span").removeClass("glyphicon-remove");
+			$(this).next("span").next().html("");
+			$("#requestbutton").disabled = false;
+		};
+});
 
 
 function submitForm() {
 	
-	var firstName = document.getElementById("fname");
-	var lastName = document.getElementById("lname");
-	var email = document.getElementById("email");
-	var message = document.getElementById("message");
+	var $firstName = $("#fname");
+	var $lastName = $("#lname");
+	var $email = $("#email");
+	var $message = $("#message");
 	
 	function submitValidate(element) {
-		var elValue = element.value;
-		var elParent = element.parentNode;
-		var elSibling = element.nextSibling.nextSibling;
-		var tipEle = element.parentNode.lastChild.previousSibling;
-
-		tipEle.innerHTML = "Required. Please enter information.";
-		elParent.className = "form-group has-error has-feedback";
-		elSibling.className = "glyphicon glyphicon-remove form-control-feedback";
+		$(element).parent().addClass("has-error");
+		$(element).next("span").addClass("glyphicon-remove");
+		$(element).next("span").next().html("Required information.")
 	};
 
-	if (firstName.value == "" || lastName.value == "" || email.value == "" || message.value == "") {
+	if ($firstName.val() == "" || $lastName.val() == "" || $email.val() == "" || $message.val() == "") {
 		
-		document.getElementById("sendmessage").disabled = true;
+		$("#sendmessage").disabled = true;
 
-		if (firstName.value == "") {
-			submitValidate(firstName);
+		if ($firstName.val() == "") {
+			submitValidate($firstName);
 		};
 
-		if (lastName.value == "") {
-			submitValidate(lastName);
+		if ($lastName.val() == "") {
+			submitValidate($lastName);
 		};
 
-		if (email.value == "") {
-			submitValidate(email);
+		if ($email.val() == "") {
+			submitValidate($email);
 		};
 
-		if (message.value == "") {
-			submitValidate(message);
+		if ($message.val() == "") {
+			submitValidate($message);
 		};				
 	} else {
 		sendForm();
@@ -133,36 +130,36 @@ function submitForm() {
 
 function sendForm() {
 		
-	document.getElementById('sendmessage').disabled = true;
+	$('#sendmessage').disabled = true;
 
-	var firstName = document.getElementById("fname");
-	var lastName = document.getElementById("lname");
-	var email = document.getElementById("email");
-	var message = document.getElementById("message");
+	var $firstName = $("#fname");
+	var $lastName = $("#lname");
+	var $email = $("#email");
+	var $message = $("#message");
 
 	var formdata = new FormData();
-	formdata.append("fname", firstName.value);
-	formdata.append("lname", lastName.value);
-	formdata.append("email", email.value);
-	formdata.append("message", message.value);	
+	formdata.append("fname", $firstName.val());
+	formdata.append("lname", $lastName.val());
+	formdata.append("email", $email.val());
+	formdata.append("message", $message.val());	
 	var ajax = new XMLHttpRequest();
 	ajax.open("POST", "email_parser.php");
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 4 && ajax.status == 200) {
 			if (ajax.responseText == "success") {
 				$('#mymodal').modal({show: true});
-				document.getElementById("statusheader").innerHTML = "Message Status";		
-				document.getElementById("status").innerHTML = "Thank you, " + firstName.value +"! Your message has been sent!";						
-				firstName.value = "";
-				lastName.value = ""; 
-				email.value = "";
-				message.value = "";
-				document.getElementById("sendmessage").disabled = false;		
+				$("#statusheader").innerHTML = "Message Status";		
+				$("#status").html("Thank you, " + $firstName.val() + "! Your message has been sent!");						
+				$firstName.val("");
+				$lastName.val(""); 
+				$email.val("");
+				$message.val("");
+				$("#sendmessage").disabled = false;		
 			} else {
 				$('#mymodal').modal({show: true});				
-				document.getElementById("statusheader").innerHTML = "Oops! There was an error...";				
-				document.getElementById("status").innerHTML = ajax.responseText;
-				document.getElementById("sendmessage").disabled = false;
+				$("#statusheader").html("Oops! There was an error...");				
+				$("#status").html(ajax.responseText);
+				$("#sendmessage").disabled = false;
 			}
 		}
 	}
@@ -264,33 +261,33 @@ $("#aptzip").blur(function(){
 /* -- Phone -- */
 
 
-
 $("#aptphonenumber").on('change',function() {
 	var $number = $(this).val();
 	$number = $number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
 	$(this).val($number);
-
-	$("#aptphonenumber").blur(function(){
-		if ($(this).val() == "") {
-			$(this).parent().addClass("has-error");
-			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").next().html("Required information.")
-			$("#requestbutton").disabled = true;
-		} else if (!rePhone.test($(this).val())) {
-			$(this).parent().addClass("has-error");
-			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").next().html("Not a valid phone number.")
-			$("#requestbutton").disabled = true;
-		} else {
-			$(this).parent().removeClass("has-error");
-			$(this).next("span").removeClass("glyphicon-remove");
-			$(this).next("span").next().html("");
-			$("#requestbutton").disabled = false;
-		};
-	});
 });
- 
 
+
+$("#aptphonenumber").blur(function(){
+	if ($(this).val() == "") {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Required information.")
+		$("#requestbutton").disabled = true;
+	} else if (!rePhone.test($(this).val())) {
+		$(this).parent().addClass("has-error");
+		$(this).next("span").addClass("glyphicon-remove");
+		$(this).next("span").next().html("Not a valid phone number.")
+		$("#requestbutton").disabled = true;
+	} else {
+		$(this).parent().removeClass("has-error");
+		$(this).next("span").removeClass("glyphicon-remove");
+		$(this).next("span").next().html("");
+		$("#requestbutton").disabled = false;
+	};
+});
+
+ 
 
 
 /* -- Optional Email -- */
